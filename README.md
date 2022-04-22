@@ -11,8 +11,6 @@
 
 [![Coverage Status](https://coveralls.io/repos/github/ULL-ESIT-INF-DSI-2122/ull-esit-inf-dsi-21-22-prct09-filesystem-notes-app-alu0101321745/badge.svg?branch=master)](https://coveralls.io/github/ULL-ESIT-INF-DSI-2122/ull-esit-inf-dsi-21-22-prct09-filesystem-notes-app-alu0101321745?branch=master)
 
-La practica funciona en local pero por temas de ficheros al subirla se crashean los usuarios y los badges no sirven.
-
 ## **Algunas tareas previas.**
 1. Repositorio: [click aquí](https://github.com/ULL-ESIT-INF-DSI-2122/ull-esit-inf-dsi-21-22-prct09-filesystem-notes-app-alu0101321745)
 2. Paquete `yarg` : Paquete utilizado para gestionar comandos que configuraremos en nuestra aplicación de notas.
