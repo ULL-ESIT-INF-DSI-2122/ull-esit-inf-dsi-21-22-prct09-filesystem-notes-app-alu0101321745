@@ -110,4 +110,27 @@ export class Usuario {
       console.log(chalk.red(`You don't have any note with title: ${title}.`));
     }
   }
+  // Modificar una nota.
+  public modify(contenidoNota: Buffer, param: string, newVal: string) {
+      const noteJSON = JSON.parse(contenidoNota.toString());
+      const title = noteJSON.title;
+      const body = noteJSON.body;
+      const color = noteJSON.color;
+      if (param === "title") {
+        fs.renameSync(`src/usuarios/${this.name}/${title}.json`, `src/usuarios/${this.name}/${newVal}.json`);
+        fs.writeFile(`src/usuarios/${this.name}/${newVal}.json`, `{\n\t"title": "${newVal}",\n\t"body": "${body}",\n\t"color": "${color}"\n}`, () => {
+          console.log(chalk.green('Note modified!'));
+        });
+      }
+      if (param === "body") {
+        fs.writeFile(`src/usuarios/${this.name}/${title}.json`, `{\n\t"title": "${title}",\n\t"body": "${newVal}",\n\t"color": "${color}"\n}`, () => {
+          console.log(chalk.green('Note modified'));
+        });
+      }
+      if (param === "color") {
+        fs.writeFile(`src/usuarios/${this.name}/${title}.json`, `{\n\t"title": "${title}",\n\t"body": "${body}",\n\t"color": "${newVal}"\n}`, () => {
+          console.log(chalk.green('Note modified'));
+        });
+      }
+  }
 }

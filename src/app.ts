@@ -1,5 +1,7 @@
 import * as yargs from 'yargs';
 import { Usuario } from './usuario';
+import * as fs from 'fs';
+import chalk from 'chalk';
 
 /**
  * Comando yark para añadir una nota.
@@ -86,7 +88,7 @@ yargs.command({
  */
  yargs.command({
   command: 'remove',
-  describe: 'read the note of an user',
+  describe: 'remove the note of an user',
   builder: {
     user: {
       describe: 'User',
@@ -106,4 +108,45 @@ yargs.command({
     }
   },
 });
+/**
+ * Comando yark para modificar una nota.
+ */
+ yargs.command({
+  command: 'modify',
+  describe: 'read the note of an user',
+  builder: {
+    user: {
+      describe: 'User',
+      demandOption: true,
+      type: 'string',
+    },
+    title: {
+      describe: 'Titule',
+      demandOption: true,
+      type: 'string',
+    },
+    param: {
+      describe: 'Param to modify',
+      demandOption: true,
+      type: 'string',
+    },
+    newVal: {
+      describe: 'New value',
+      demandOption: true,
+      type: 'string',
+    },
+  },
+  handler(argv) {
+    if (typeof argv.user === 'string' && typeof argv.title === 'string' && typeof argv.param === 'string' && typeof argv.newVal === 'string') {
+      if (fs.existsSync(`src/usuarios/${argv.user}/${argv.title}.json`)) {
+        const usuario = new Usuario(argv.user);
+        const contenidoNota = fs.readFileSync(`src/usuarios/${argv.user}/${argv.title}.json`);
+        usuario.modify(contenidoNota, argv.param, argv.newVal);
+      } else {
+        console.log(chalk.red(`You don't have any note with title: ${argv.title}.`));
+      }
+    }
+  },
+});
+
 yargs.argv;
