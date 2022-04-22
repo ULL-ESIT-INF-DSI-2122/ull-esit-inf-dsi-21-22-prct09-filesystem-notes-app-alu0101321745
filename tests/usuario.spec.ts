@@ -22,6 +22,7 @@ describe('Pruebas de la clase Usuario:', () => {
     });
     it('Añadir notas', () => {
         usuario1.addNote(redNote.title, redNote.body, redNote.color);
+        usuario2.addNote(redNote.title, redNote.body, redNote.color);
         usuario1.addNote(greenNote.title, greenNote.body, greenNote.color);
         usuario1.addNote(blueNote.title, blueNote.body, blueNote.color);
         usuario1.addNote(yellowNote.title, yellowNote.body, yellowNote.color);
@@ -45,6 +46,5 @@ describe('Pruebas de la clase Usuario:', () => {
         expect(usuario1.remove(redNote.title)).to.be.eql(undefined);
         expect(usuario1.remove(greenNote.title)).to.be.eql(undefined);
         expect(usuario1.remove(blueNote.title)).to.be.eql(undefined);
-        expect(usuario1.remove(yellowNote.title)).to.be.eql(undefined);
     });
 });
