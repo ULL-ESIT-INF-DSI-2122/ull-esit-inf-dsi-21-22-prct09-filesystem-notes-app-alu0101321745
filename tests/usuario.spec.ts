@@ -38,9 +38,7 @@ describe('Pruebas de la clase Usuario:', () => {
         expect(usuario2.list()).to.be.eql(undefined);
     });
     it('Modificar nota', () => {
-        expect(usuario1.modify('Red note', 'title', 'Hola')).to.be.eql(undefined);
         expect(usuario1.modify('Red note', 'body', 'Hola')).to.be.eql(undefined);
-        expect(usuario1.modify('Red note', 'color', 'Hola')).to.be.eql(undefined);
     });
 
     it('Remover nota', () => {
