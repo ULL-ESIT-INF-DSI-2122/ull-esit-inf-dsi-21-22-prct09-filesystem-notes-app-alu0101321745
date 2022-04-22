@@ -138,13 +138,8 @@ yargs.command({
   },
   handler(argv) {
     if (typeof argv.user === 'string' && typeof argv.title === 'string' && typeof argv.param === 'string' && typeof argv.newVal === 'string') {
-      if (fs.existsSync(`src/usuarios/${argv.user}/${argv.title}.json`)) {
-        const usuario = new Usuario(argv.user);
-        const contenidoNota = fs.readFileSync(`src/usuarios/${argv.user}/${argv.title}.json`);
-        usuario.modify(contenidoNota, argv.param, argv.newVal);
-      } else {
-        console.log(chalk.red(`You don't have any note with title: ${argv.title}.`));
-      }
+      const usuario = new Usuario(argv.user);
+      usuario.modify(argv.title, argv.param, argv.newVal);
     }
   },
 });

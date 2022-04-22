@@ -111,9 +111,10 @@ export class Usuario {
     }
   }
   // Modificar una nota.
-  public modify(contenidoNota: Buffer, param: string, newVal: string) {
+  public modify(title: string, param: string, newVal: string) {
+    if (fs.existsSync(`src/usuarios/${this.name}/${title}.json`)) {
+      const contenidoNota = fs.readFileSync(`src/usuarios/${this.name}/${title}.json`);
       const noteJSON = JSON.parse(contenidoNota.toString());
-      const title = noteJSON.title;
       const body = noteJSON.body;
       const color = noteJSON.color;
       if (param === "title") {
@@ -132,5 +133,8 @@ export class Usuario {
           console.log(chalk.green('Note modified'));
         });
       }
+    } else {
+      console.log(chalk.red(`You don't have any note with title: ${title}.`));
+    }
   }
 }
