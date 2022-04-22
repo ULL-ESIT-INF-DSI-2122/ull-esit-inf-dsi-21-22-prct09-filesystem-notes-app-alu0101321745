@@ -4,6 +4,6 @@
  * @param body :
  * @param color :
  */
-export class Nota {
+export class Note {
     constructor(public title: string, public body: string, public color: string) {}
 }
